@@ -15,7 +15,7 @@ function Main() {
                 [name]: value
             }
         })
-    }
+    } 
     return (
         <main>
             <div className="form">
