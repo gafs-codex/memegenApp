@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function Main() {
     const [meme, setMeme] = useState({
         topText: "One does not simply",
@@ -15,7 +15,16 @@ function Main() {
                 [name]: value
             }
         })
-    } 
+    }
+
+    const [allMemes, setAllMemes] = useState([])
+
+    useEffect(() => {
+        const url = "https://api.imgflip.com/get_memes"
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setAllMemes(data.data.memes))
+    }, [])
     return (
         <main>
             <div className="form">
